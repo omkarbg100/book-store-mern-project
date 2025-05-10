@@ -11,6 +11,7 @@ app.use(express.json());
 
 // Option 1: Allow All Origins with Default of cors(*)
 app.use(cors());
+app.use(express.static('model'))
 
 // Option 2: Allow Custom Origins
 // app.use(
@@ -25,6 +26,9 @@ app.get("/", (req, res) => {
   console.log(req);
   res.send("WELCOME to MERN stack tutorials");
 });
+app.get(/a/, (req, res) => {
+  res.send('/a/')
+})
 
 
 
@@ -34,7 +38,6 @@ mongoose
   .connect(URL)
   .then(() => {
     console.log("app conected to data base");
-
     app.listen(PORT || 5000, () => {
       console.log(`App is listing on the port : ${PORT}`);
     });
